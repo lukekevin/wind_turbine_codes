@@ -2,12 +2,7 @@ from __future__ import print_function # Python 2/3 compatibility
 import cv2 # Import the OpenCV library
 import numpy as np # Import Numpy library
  
-# Project: Object Tracking
-# Author: Addison Sears-Collins 
-# Website: https://automaticaddison.com
-# Date created: 06/13/2020
-# Python version: 3.7
- 
+
 def main():
     """
     Main method of the program.
