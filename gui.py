@@ -9,6 +9,7 @@ class main():
 
         self.NavigationRail = ft.NavigationRail(selected_index=0,
                                                 destinations=[
+
                                                     ft.NavigationRailDestination(icon=ft.icons.HOME_ROUNDED,label="Home",padding=10,),
                                                     ft.NavigationRailDestination(icon=ft.icons.CAMERA_ALT_ROUNDED,label="Stream",padding=10),
                                                     ft.NavigationRailDestination(icon=ft.icons.QUESTION_MARK,label="How it Works",padding=10),
@@ -16,6 +17,8 @@ class main():
                                                 ],width=100,group_alignment=0.0,on_change=self.ChangeTabs)
         
         
+
+
         self.page.add(
         ft.Row(
             [
@@ -32,10 +35,13 @@ class main():
                         
                     ],alignment=ft.MainAxisAlignment.CENTER)
                 ], alignment=ft.MainAxisAlignment.CENTER, expand=True),
+
+
             ],
             expand=True,
         )
         )
+
         
     def ChangeTabs(self,e):
         if self.NavigationRail.selected_index == 0:
@@ -151,6 +157,9 @@ class main():
 
 
 ft.app(target=main,view=ft.AppView.WEB_BROWSER)
+
+
+
 
 
 
