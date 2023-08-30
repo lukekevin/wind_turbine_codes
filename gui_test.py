@@ -1,4 +1,11 @@
+import random
+from time import sleep
 
-def main():
-    while True:
-        print("function 1 Running")
+def main(variable):
+        for i in range(100):
+                data = random.randint(1,100)
+                variable.value = data
+
+
+
+
