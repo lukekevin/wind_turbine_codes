@@ -102,17 +102,16 @@ if __name__ == '__main__':
     print(__doc__)
     XARRAY, YARRAY=main()
 
-    plt.figure(figsize=(10,5))
-
+    plt.figure(figsize=(7,11))
     plt.subplot(2,1,1)
     plt.xlabel('Time interval')
-    plt.ylabel('Magnitude of position')
+    plt.ylabel('Magnitude of Y position')
     plt.title('Wind Turbine blade movement over time')
     plt.plot(YARRAY)
 
     plt.subplot(2,1,2)
     plt.xlabel('Time interval')
-    plt.ylabel('Magnitude of position')
+    plt.ylabel('Magnitude of X position')
     plt.title('Wind Turbine blade movement over time')
-    plt.plot(YARRAY)
-    
+    plt.plot(XARRAY)
+    print('Simulation complete')
