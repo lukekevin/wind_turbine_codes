@@ -1,14 +1,11 @@
 import flet as ft
 from threading import Thread
 import gui_test
-from time import sleep
 from multiprocessing import Process, Value
 
 
 class main():
     def __init__(self,page:ft.Page) -> None:
-        global data
-        data = "Default Value"
         self.page = page
         self.page.title = "Wind Turbine"
         self.SharedVariable = Value('i',0)
@@ -19,7 +16,7 @@ class main():
                                                     ft.NavigationRailDestination(icon=ft.icons.CAMERA_ALT_ROUNDED,label="Information",padding=10),
                                                     ft.NavigationRailDestination(icon=ft.icons.QUESTION_MARK,label="How it Works",padding=10),
                                                     ft.NavigationRailDestination(icon=ft.icons.PEOPLE_ROUNDED,label="Contributors",padding=10)
-                                                ],width=100,group_alignment=0.0,on_change=self.ChangeTabs)
+                                                ],width=100,group_alignment=0.0,on_change=self.ChangeTabs,leading=ft.Image(src=f"/img/transparent.png",width=75,height=75))
                             
         self.Text = ft.Text(value="Description",style=ft.TextThemeStyle.TITLE_LARGE,text_align=ft.TextAlign.CENTER,)
         self.InfoText = [ft.Text(value="Information",style=ft.TextThemeStyle.DISPLAY_LARGE,text_align=ft.TextAlign.CENTER),
@@ -31,7 +28,7 @@ class main():
                 ft.VerticalDivider(width=1),
                 ft.Column(controls=[
                     ft.Row(controls=[
-                        ft.Column(controls=self.InfoText)
+                        ft.Column(controls=self.InfoText),
                         
                     ],alignment=ft.MainAxisAlignment.CENTER)
                 ], alignment=ft.MainAxisAlignment.CENTER, expand=True),
@@ -48,10 +45,13 @@ class main():
                 ft.Column(controls=[
                     ft.Row(controls=[
                         ft.Column(controls=[
-                            ft.Text(value="Home",style=ft.TextThemeStyle.DISPLAY_LARGE,text_align=ft.TextAlign.CENTER),
-                            ft.Text(value="Description",style=ft.TextThemeStyle.TITLE_LARGE,text_align=ft.TextAlign.CENTER),
+                            ft.Text(value="Windmill Project",style=ft.TextThemeStyle.DISPLAY_LARGE,text_align=ft.TextAlign.CENTER),
+                            ft.Text(value='Made by "Science-AI Symbiotic Group, SSAN"',style=ft.TextThemeStyle.TITLE_LARGE,text_align=ft.TextAlign.CENTER),
+                            ft.Column(controls=[
+                                ft.Switch(label="Change Theme",label_position=ft.LabelPosition.LEFT,value=True,on_change=self.ChangeThemes,)
 
-                            ft.ElevatedButton(text="Placeholder Button")
+                            ],alignment=ft.MainAxisAlignment.CENTER,),
+                            
                         ])
                         
                     ],alignment=ft.MainAxisAlignment.CENTER)
@@ -78,17 +78,22 @@ class main():
                 ft.Column(controls=[
                     ft.Row(controls=[
                         ft.Column(controls=[
-                            ft.Text(value="Home",style=ft.TextThemeStyle.DISPLAY_LARGE,text_align=ft.TextAlign.CENTER),
-                            ft.Text(value="Description",style=ft.TextThemeStyle.TITLE_LARGE,text_align=ft.TextAlign.CENTER),
+                            ft.Text(value="Windmill Project",style=ft.TextThemeStyle.DISPLAY_LARGE,text_align=ft.TextAlign.CENTER),
+                            ft.Text(value='Made by "Science-AI Symbiotic Group, SSAN"',style=ft.TextThemeStyle.TITLE_LARGE,text_align=ft.TextAlign.CENTER),
+                            ft.Column(controls=[
+                                ft.Switch(label="Change Theme",label_position=ft.LabelPosition.LEFT,value=True,on_change=self.ChangeThemes,)
 
-                            ft.ElevatedButton(text="Placeholder Button")
+                            ],alignment=ft.MainAxisAlignment.CENTER,),
+                            
                         ])
                         
                     ],alignment=ft.MainAxisAlignment.CENTER)
                 ], alignment=ft.MainAxisAlignment.CENTER, expand=True),
+
+
             ],
             expand=True,
-            )
+        )
             )
             
             
@@ -108,7 +113,7 @@ class main():
                 self.BackgroundThread.join()
                 self.BackgroundThread = None
             except:
-                print("Thread Cannot be Started again.")
+                print("An error was Given")
 
 
             print(self.SharedVariable.value)
@@ -129,7 +134,6 @@ class main():
                             ft.Text(value="How it Works",style=ft.TextThemeStyle.DISPLAY_LARGE,text_align=ft.TextAlign.CENTER),
                             ft.Text(value="Description",style=ft.TextThemeStyle.TITLE_LARGE,text_align=ft.TextAlign.CENTER),
 
-                            ft.ElevatedButton(text="Placeholder Button")
                         ])
                         
                     ],alignment=ft.MainAxisAlignment.CENTER)
@@ -154,7 +158,36 @@ class main():
                     ft.Row(controls=[
                         ft.Column(controls=[
                             ft.Text(value="Contributors",style=ft.TextThemeStyle.DISPLAY_LARGE,text_align=ft.TextAlign.CENTER),
-                            ft.ElevatedButton(text="Placeholder Button")
+                            ft.Row(controls=[
+                                ft.Card(
+                                        content=ft.Container(
+                                            content=ft.Column(
+                                                        [
+                                                            ft.ListTile(
+                                                                leading=ft.Icon(ft.icons.PERSON_2),
+                                                                title=ft.Text("Student Name"),
+                                                                subtitle=ft.Text("Class"),
+                                                            ),
+                                                            ft.ListTile(
+                                                                leading=ft.Icon(ft.icons.PERSON_2),
+                                                                title=ft.Text("Student Name"),
+                                                                subtitle=ft.Text("Class"),
+                                                                
+                                                            ),
+
+                                                            
+                                                        ]                       
+                                                            ),
+                                                width=800,
+                                                alignment=ft.alignment.center,
+                                                padding=10,
+                                    
+                                                        )
+        )
+                        
+
+                            ],alignment=ft.alignment.center)
+                            
                         ])
                         
                     ],alignment=ft.MainAxisAlignment.CENTER)
@@ -167,11 +200,20 @@ class main():
             
             self.page.update()
         
+    def ChangeThemes(self,e):
+        self.page.theme_mode = (
+            ft.ThemeMode.DARK
+            if self.page.theme_mode == ft.ThemeMode.LIGHT
+            else ft.ThemeMode.LIGHT
+        )
+
+        self.page.update()
+
 
 
 
 if __name__ == "__main__":
-    ft.app(target=main,view=ft.AppView.WEB_BROWSER)
+    ft.app(target=main,view=ft.AppView.WEB_BROWSER,assets_dir="assets")
 
 
 
