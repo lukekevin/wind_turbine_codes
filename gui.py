@@ -6,6 +6,7 @@ from multiprocessing import Process, Value
 
 class main():
     def __init__(self,page:ft.Page) -> None:
+        print("started app")
         self.page = page
         self.page.title = "Wind Turbine"
         self.SharedVariable = Value('i',0)
