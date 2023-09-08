@@ -29,22 +29,33 @@ class main():
             [
                 self.NavigationRail,
                 ft.VerticalDivider(width=1),
-                ft.Column(controls=[
+                ft.Container(content=ft.Column(controls=[
                     ft.Row(controls=[
                         ft.Column(controls=self.InfoText),
                         
                     ],alignment=ft.MainAxisAlignment.CENTER)
-                ], alignment=ft.MainAxisAlignment.CENTER, expand=True),
+                ], alignment=ft.MainAxisAlignment.CENTER, expand=True),image_src="information.jpg",image_fit=ft.ImageFit.FILL,image_opacity=0.4,width=2300),
+                
             ],
             expand=True,
             )
             
 
+        self.switchtoHome()
+            
+            
+        
+        
+        
+    def switchtoHome(self):
+        self.page.controls.clear()
+        print("e")
         self.page.add(
-        ft.Row(
+            ft.Row(
             [
                 self.NavigationRail,
                 ft.VerticalDivider(width=1),
+                
                 ft.Container(content=ft.Column(controls=[
                     ft.Row(controls=[
                         ft.Column(controls=[
@@ -67,7 +78,7 @@ class main():
                         ])
                         
                     ],alignment=ft.MainAxisAlignment.CENTER)
-                ], alignment=ft.MainAxisAlignment.CENTER, expand=True),image_src="home.jpg",image_fit=ft.ImageFit.FILL,width=self.page.width,image_opacity=0.4),
+                ], alignment=ft.MainAxisAlignment.CENTER, expand=True),image_src="home.jpg",image_fit=ft.ImageFit.FILL,image_opacity=0.4,width=2300),
                 
 
 
@@ -77,9 +88,7 @@ class main():
             )
             
             
-        
-        
-        
+        self.page.update()
 
 
             
@@ -115,7 +124,7 @@ class main():
                         ])
                         
                     ],alignment=ft.MainAxisAlignment.CENTER)
-                ], alignment=ft.MainAxisAlignment.CENTER, expand=True),image_src="home.jpg",image_fit=ft.ImageFit.FILL,width=self.page.width,image_opacity=0.4),
+                ], alignment=ft.MainAxisAlignment.CENTER, expand=True),image_src="home.jpg",image_fit=ft.ImageFit.FILL,width=2300,image_opacity=0.4),
                 
 
 
@@ -131,7 +140,8 @@ class main():
             self.page.controls.clear()
             
             self.page.add(
-            self.streamView,
+                self.streamView,
+            
             )
             
             print("Started Thread")
@@ -182,7 +192,7 @@ class main():
             [
                 self.NavigationRail,
                 ft.VerticalDivider(width=1),
-                ft.Column(controls=[
+                ft.Container(content=ft.Column(controls=[
                     ft.Row(controls=[
                         ft.Column(controls=[
                             ft.Text(value="Contributors",style=ft.TextThemeStyle.DISPLAY_LARGE,text_align=ft.TextAlign.CENTER),
@@ -219,7 +229,8 @@ class main():
                         ])
                         
                     ],alignment=ft.MainAxisAlignment.CENTER)
-                ], alignment=ft.MainAxisAlignment.CENTER, expand=True),
+                ], alignment=ft.MainAxisAlignment.CENTER, expand=True),image_src="contributors.jpg",image_fit=ft.ImageFit.FILL,image_opacity=0.4,width=2300),
+                
             ],
             expand=True,
             )
