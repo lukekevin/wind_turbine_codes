@@ -1,8 +1,8 @@
 body {
-    background-image: url(assets/bg.jpeg);
+    background-image: url(assets/home.jpg);
     height: 1256px;
     background-repeat: no-repeat;
-    background-size: 4096px 1600px;
+    background-size: 4096px 3000px;
 }
 
 .text {
